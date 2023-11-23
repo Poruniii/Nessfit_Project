@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Exercise Log | Home</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Oswald|Ubuntu:400,700" rel="stylesheet">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='bs/css/united.min.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+
+		<div class="container-fluid" id="wrapper">
+			
+			<div class="row" id="homeJumbo">
+				<div class="overlay"></div>
+				<div class="col-lg-12">
+					<h1>
+						<a href="{{ url_for('views.index') }}">EXERCISE LOGS</a>
+					</h1>
+					<!--UPDATED-->
+					<div class="container">
+						{% if current_user.is_authenticated %}
+							<p>Welcome, {{ current_user.username }}!</p>
+						{% endif %}
+					</div>
+					<!--END-->
+					<div class="row t20">
+						<div class="col-lg-4 col-lg-offset-4">
+							<ul class="nav nav-pills nav-justified">
+                                <div class="navbar">
+                                    <!--<li><a href="/index">Home</a></li>-->
+							  <li role="presentation" class="active">
+							  	<!--<a href="{{ url_for('views.index') }}" title="Home">Home</a>-->
+                                <a href="/">Sign out</a>
+							  </li>
+							  <li role="presentation">
+							  	<a href="{{ url_for('views.add') }}" title="Add">Add and Edit Exercises</a>
+							  </li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row t20">
+				<div class="col-lg-4 col-lg-offset-4">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<form action="{{ url_for('views.logs') }}" method="POST" role="form">
+							
+								<div class="form-group">
+									<label><i class="glyphicon glyphicon-plus-sign"></i> Add New Date</label>
+									<div class="input-group">
+									  <input type="date" class="form-control" name="date" placeholder="Select New Date" aria-label="date" aria-describedby="add-btn">
+									  <span class="input-group-btn">
+										<button type="submit" class="btn btn-primary" id="add-btn">
+										  <i class="glyphicon glyphicon-plus-sign"></i> Add Date
+										</button>
+									  </span>
+									</div>
+									<!--UPDATED-->
+									{% with messages = get_flashed_messages(with_categories=true) %}
+										{% if messages %}
+											{% for category, message in messages %}
+												{% if category == 'error' %}
+													<div class="alert alert-danger" role="alert">
+														{{ message }}
+													</div>
+												{% endif %}
+											{% endfor %}
+										{% endif %}
+									{% endwith %}
+								</div>
+							<!--END-->
+							</form>	
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row t20">
+				<div class="col-lg-12">
+					<h4 class="text-center text-white"><strong>Existing Records ({{ log_dates|length }})</strong></h4>
+				</div>
+			</div>
+			<!--UPDATED-->
+			{% for row in log_dates|batch(4) %}
+        <div class="row t20">
+            {% for log_date in row %}
+                <div class="col-lg-3">
+                    <div class="panel panel-warning">
+                        <div class="panel-body text-bold">
+                            <i class="glyphicon glyphicon-calendar"></i> {{ log_date['log_date'].date.strftime('%B %d, %Y') }}
+							<!--END-->
+                        <a class="btn btn-primary btn-xs pull-right" href="{{ url_for('views.remove_log', log_id=log_date['log_date'].id) }}">
+                            Delete <i class="glyphicon glyphicon-arrow-right"></i>
+                        </a>
+						<a class="btn btn-primary btn-xs pull-right" href="{{ url_for('views.view', log_id=log_date['log_date'].id) }}">
+                            Add <i class="glyphicon glyphicon-arrow-right"></i>
+						</a>
+                    </div>
+                    <ul class="list-group">
+                        {% for exercise in log_date['exercises'] %}
+                            <li class="list-group-item text-bold">
+                                <span class="badge">{{ exercise['name'] }} |</span>
+                                Reps: {{ exercise['reps'] }} | Sets: {{ exercise['sets'] }} | Rest in minutes: {{ exercise['rest'] }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+		
+
+			<footer>
+				<div class="row pad">
+					<div class="col-lg-12 text-center">
+						Copyright &copy; 2023 <strong>NessFit</strong>
+					</div>
+				</div>
+			</footer>
+
+		</div>
+
+		<!-- jQuery -->
+		<script src="{{ url_for('static', filename='bs/js/jquery.min.js') }}"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="{{ url_for('static', filename='bs/js/bootstrap.min.js') }}"></script>
+	</body>
+</html>

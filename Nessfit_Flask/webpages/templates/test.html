@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/8505b26260.js" crossorigin="anonymous"></script> 
+</head>
+<body>
+    <div class="container">
+        <div class="formbox">
+            <h1 id="title">Sign Up</h1>
+            <form>
+                <div class="inputgroup">
+                    <div class="inputfield" id="namefield">
+                        <i class="fa-solid fa-user" style="color: #000000;"></i>
+                        <input type="text" placeholder="Username">
+                    </div>
+
+                    <div class="inputfield">
+                        <i class="fa-sharp fa-solid fa-envelope" style="color: #000000;"></i>
+                        <input type="email" placeholder="Email">
+                    </div>
+
+                    <div class="inputfield">
+                        <i class="fa-sharp fa-solid fa-key" style="color: #000000;"></i>
+                        <input type="password" placeholder="Password">
+                    </div>
+
+                </div>
+                <div class="buttonfield">
+                    <button type="button" id="signupbutton">Sign up</button>
+                    <button type="button" id="signinbutton">Sign in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+    let signupbutton = document.getElementById("signupbutton");
+    let signinbutton = document.getElementById("signinbutton");
+    let namefield = document.getElementById("namefield");
+    let title = document.getElementById("title");
+
+    signinbutton.onclick = function(){  
+        namefield.style.maxHeight = "0" ;
+        title.innerHTML = "Sign In" ;
+        signupbutton.classList.add("disable") ;
+        signinbutton.classList.remove("disable");
+    }
+    </script>
+</body>
+</html>

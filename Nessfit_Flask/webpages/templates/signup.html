@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+
+    <h1>Register</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for item in messages %}
+                    {% if item|length ==2 %}
+                        {%set message, category = item %}
+                    <li style="color: {{ 'red' if 'danger' in category else 'green' }};">{{ message }}</li>
+                    {% else %}
+                        <li>{{ item }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form action="/sign-up" method="post">
+         <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password1">Password:</label>
+                <input type="password1" id="password" name="password1" required>
+            </div>
+            <div class="input-group">
+                <label for="password2">Confirm Password:</label>
+                <input type="password1" id="password2" name="password2" required>
+            </div>
+            <button type="submit" class="signup-btn">Sign Up</button>
+        <a href="{{url_for('auth.login')}}">Login</a>
+    </form>
+
+</body>
+</html>

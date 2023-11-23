@@ -1,0 +1,213 @@
+<!--<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI CALCULATOR</title>
+    <style>
+        * {
+    font-family: Arial, sans-serif;
+    text-align:center;
+    margin: 10px;
+    margin-top: 20px;
+    padding: 5px;
+    font-style: oblique;
+    color: rgb(0, 0, 0);
+    box-sizing: border-box;
+}
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    align-items:center;
+
+
+}
+body{
+    background-image:url('https://i.pinimg.com/736x/9d/7c/af/9d7caf002efa649234adcec4aadb96fc.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    align-items: center;
+    justify-content: center;
+    
+}
+p{
+    font-size: 15px;
+    color:rgb(0, 0, 0);
+}
+
+input{
+    background: transparent;
+    border-color: blueviolet;
+    border-radius: 5in;
+}
+button{
+    position: relative;
+    width: 100px;
+    padding: 2px 1px;
+    text-align:center;
+    margin: 20px 10px;
+    font-weight:bold;
+    border: 3px solid rgb(178, 35, 250);
+    background: transparent;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    overflow: hidden;
+    text-transform: capitalize;
+    border-radius: 5in;
+}
+span{
+    background: rgb(178, 35, 250);
+    height: 100%;
+    width: 0;
+    position:absolute;
+    left: -10px;
+    bottom: -10px;
+    z-index: -1;
+    transition: 0.6s;
+}
+button:hover span{
+    width: 100%;
+}
+caption{
+    color:rgb(211, 211, 211);
+}
+
+table{
+    width: 500px;
+    border-spacing: 20px;
+}
+th{
+    text-align: left;
+}
+table, th, td{
+    border: 1px solid whitesmoke;
+    border-collapse: collapse;
+    background:transparent;
+    color: rgb(211, 211, 211);
+}
+th,td{
+    padding: 5px;
+}
+caption{
+    text-align: left;
+}
+    </style>
+    <h1>Body Mass Index Calculator</h1>
+</head>
+<body> 
+    <form action="/" method='POST'>
+            Weight in kg:
+            <input type="text"name='weight' required="required"><br>
+            Height in cm :
+            <input type="text"name='height' required="required"><br>
+            Age :
+            <input type="'text"name='age' required="required"><br>
+            Gender :
+            <label><input id="male" type="radio" name="male-female"> Male</label>
+            <label><input id="female" type="radio" name="male-female"> Female</label><br>
+            <button type="'submit" value="'submit"><span></span>Calculate</button>
+        </form>
+        source of bmi table:https://www.google.com/url?sa=i&url=https%3A%2F%2Fsurgicaltechie.com%2Fbmi-calculator-men%2F&psig=AOvVaw1EAlyJPXMYoposkabx3moP&ust=1698997524038000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOig3pDppIIDFQAAAAAdAAAAABAH
+        <table>
+            <caption>BMI Table</caption>
+            <tr>
+                <th>Classifications</th>
+                <th>BMI</th>
+            </tr>
+            <tr>
+                <td>Underweight</td>
+                <td> less than 18.5</td>
+            </tr>
+            <tr>
+                <td>Normal</td>
+                <td>18.5 to 24.9</td>
+            </tr>
+            <tr>
+                <td>Overweight</td>
+                <td>25 to 29.9</td>
+            </tr>
+            <tr>
+                <td>Obese</td>
+                <td>30 & above</td>
+            </tr>
+        <div>
+            {% if bmi %}
+            <p>your bmi is {{bmi}}</p>
+            <p>your category is {{category}}</p>
+            <p>Age: {{a}}</p>
+            <p>Gender: {{g}} </p>
+            {% endif %}
+        </div>
+
+
+    </body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI CALCULATOR</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    <h1>Body Mass Index Calculator</h1>
+    <form action="/" method='POST'>
+        Weight in kg:
+        <input type="text" name='weight' required="required"><br>
+        Height in cm:
+        <input type="text" name='height' required="required"><br>
+        Age:
+        <input type="text" name='age' required="required"><br>
+        Gender:
+        <label><input id="male" type="radio" name="male-female"> Male</label>
+        <label><input id="female" type="radio" name="male-female"> Female</label><br>
+        <button type="submit" value="submit" onclick="openpopup()"><span></span>Calculate</button>
+    </form>
+
+    <!-- source of bmi table: https://www.google.com/url?sa=i&url=https%3A%2F%2Fsurgicaltechie.com%2Fbmi-calculator-men%2F&psig=AOvVaw1EAlyJPXMYoposkabx3moP&ust=1698997524038000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOig3pDppIIDFQAAAAAdAAAAABAH -->
+    <table>
+        <caption>BMI Table</caption>
+        <tr>
+            <th>Classifications</th>
+            <th>BMI</th>
+        </tr>
+        <tr>
+            <td>Underweight</td>
+            <td>less than 18.5</td>
+        </tr>
+        <tr>
+            <td>Normal</td>
+            <td>18.5 to 24.9</td>
+        </tr>
+        <tr>
+            <td>Overweight</td>
+            <td>25 to 29.9</td>
+        </tr>
+        <tr>
+            <td>Obese</td>
+            <td>30 & above</td>
+        </tr>
+    </table>
+
+    <div>
+        <div class="popup" id="popup">
+            <h3>BMI Result and Classifications:</h3>
+            <form>
+                {% if bmi %}
+                <p>your bmi is {{bmi}}</p>
+                <p>your category is {{category}}</p>
+                <p>Age: {{a}}</p>
+                <p>Gender: {{g}} </p>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let popup = document.getElementById("popup");
+
+        function openpopup() {
+            popup.classList.add("openpopup");
+        }
+    </script>
+</body>
+</html>

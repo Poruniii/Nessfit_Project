@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add necessary meta tags, title, and CSS links -->
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Exercise</h1>
+        <form method="POST" action="{{ url_for('views.update', exercise_id=exercise.id) }}">
+            <!-- Exercise Name -->
+            <div class="form-group">
+                <label for="exercise_name">Exercise Name</label>
+                <input type="text" class="form-control" id="exercise_name" name="exercise_name" value="{{ exercise.name }}" required>
+            </div>
+            <!-- Reps -->
+            <div class="form-group">
+                <label for="reps">Reps</label>
+                <input type="number" class="form-control" id="reps" name="reps" value="{{ exercise.reps }}" required>
+            </div>
+            <!-- Sets -->
+            <div class="form-group">
+                <label for="sets">Sets</label>
+                <input type="number" class="form-control" id="sets" name="sets" value="{{ exercise.sets }}" required>
+            </div>
+            <!-- Rest -->
+            <div class="form-group">
+                <label for="rest">Rest (in minutes)</label>
+                <input type="number" class="form-control" id="rest" name="rest" value="{{ exercise.rest }}" required>
+            </div>
+            <!-- Add a hidden input for exercise ID -->
+            <input type="hidden" name="exercise_id" value="{{ exercise.id }}">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary">Update Exercise</button>
+        </form>
+    </div>
+    <!-- Add necessary script tags or JS files -->
+</body>
+</html>

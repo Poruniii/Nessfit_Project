@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <form action="/bmi-calculator" method='POST'>
+            Weight in kg
+            <input type="text"name='weight'><br>
+            Height in cm 
+            <input type="text"name='height'><br>
+            Age
+            <input type="'text"name='age'><br>
+            Gender
+            <input type="text"name='gender'><br>
+            <button type="'submit" value="'submit">Calculate</button>
+        </form>
+        {% if bmi %}
+        <p>your bmi is {{bmi}}</p>
+        <p>your category is {{category}}</p>
+        <p>Age: {{a}}</p>
+        <p>Gender: {{g}} </p>
+        {% endif %}
+    </body>
+</html>

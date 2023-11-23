@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+.body{
+    font-family: 'Times New Roman', Times, serif
+}
+.navbar{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(142, 155, 155, 0.119),rgba(170, 170, 196, 0.146)), url(https://images.everydayhealth.com/images/everything-you-need-know-about-fitness-1440x810.jpg?sfvrsn=2fee0a3b_4);
+    background-size: cover;
+    background-position: center;
+    padding: 10px 9%;
+}
+.navdiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+li{
+    list-style: none;
+    display: inline-block;
+}
+li a{
+    color:brown;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 25px;
+}
+.logo{
+    width: 190px;
+    cursor: pointer
+}
+.row{
+    display: flex;
+    height: 88%;
+    align-items: center;
+}
+.col{
+    flex-basis: 50%;
+}
+h1{
+    color:brown;
+    font-size: 100px;
+}
+p{
+    color:brown;
+    font-size: 20px;
+    line-height: 15px;
+}
+button{
+    width: 230px;
+    color:brown;
+    font-size: 12px;
+    padding: 12px 0;
+    background: #fff;
+    border: 0;
+    border-radius: 20px;
+    outline: none;
+    margin-top: 30px;
+    cursor: pointer;
+}
+.card{
+    width: 200px;
+    height: 230px;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px 15px;
+    background-position: center;
+    background-size: cover;
+}
+.card1{
+    background-image: url(https://phenq.com/cdn/shop/articles/dietplan-1024x682_1200x1200.jpg?v=1614768008);
+}
+.card2{
+    background-image: url(https://health.clevelandclinic.org/wp-content/uploads/sites/3/2022/04/exerciseHowOften-944015592-770x533-1-650x428.jpg);
+}
